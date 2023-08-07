@@ -1,10 +1,11 @@
+// 숨김 화면
+$('.set_effect *').css('display', 'none');
+
 // 화면에 입력값 띄우기
 $('#inputctn').on('input', function (e) {
   let elem = $(this).val();
   $('.led1').val(elem);
 });
-
-// 호버 lev_btns
 
 // 텍스트 속도
 let speedLV = '0s';
@@ -30,8 +31,8 @@ $('.tx_size').on('click', function () {
   $('.led1').css('fontSize', `${sizeLV}`);
 });
 
-// 시작하기
-$('.runbtn').on('click', function () {
+// 미리보기
+$('.bt_pre_view').on('click', function () {
   $('.led1').css({
     animationName: 'rolling1',
     animationDuration: `${speedLV}`,
@@ -39,4 +40,31 @@ $('.runbtn').on('click', function () {
     animationTimingFunction: 'linear',
     fontSize: `${sizeLV}`,
   });
+});
+
+// 효과넣기
+$('.bt_set_effect').on('click', function () {
+  $('.set_effect *').toggle();
+});
+
+// 구글 폰트 사용법 ( CSS에 등록 )
+// font-family: 'Anton', sans-serif;
+// font-family: 'Handjet', cursive;
+// font-family: 'Noto Sans KR', sans-serif;
+// font-family: 'Oswald', sans-serif;
+// font-family: 'Ubuntu', sans-serif;
+
+console.log($('./f-sty').style('fontFamily'));
+
+$('./f_sty').on('click', function () {
+  let antonFont = $(this).hasClass('f-anton');
+  let handjetFont = $(this).hasClass('f-handjet');
+  let ubuntuFont = $(this).hasClass('f-ubuntu');
+
+  if (antonFont === true) {
+    $('.led1').css({
+      fontFamily: 'Anton',
+      sansSerif,
+    });
+  }
 });
