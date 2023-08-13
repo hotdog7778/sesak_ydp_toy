@@ -2,6 +2,7 @@
 $('.set_effect *').css('display', 'none');
 
 // 화면에 입력값 띄우기
+// keydown 이벤트를 쓰면 입력칸에는 한글자씩 더들어가는데 미리보기 화면에는 그 한글자가 안떠서 input 이벤트로 대체
 $('#inputctn').on('input', function (e) {
   let elem = $(this).val();
   $('.led1').val(elem);
@@ -42,7 +43,7 @@ $('.bt_pre_view').on('click', function () {
   });
 });
 
-// 효과넣기
+// 효과넣기 버튼 토글
 $('.bt_set_effect').on('click', function () {
   $('.set_effect *').toggle();
 });

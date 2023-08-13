@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>설정 페이지</title>
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Oswald:wght@200;300;400;500;600;700&family=Ubuntu:ital,wght@0,300;0,700;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Handjet:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Oswald:wght@200;300;400;500;600;700&family=Ubuntu:ital,wght@0,300;0,700;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CDN (css) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap CDN (js) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="./index.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: rgb(26, 26, 39);
+      }
+
+      section {
+        margin: 20px 20px;
+      }
+
+      .lev_btns {
+        padding: 10px 5px;
+      }
+      .outsidebox {
+        position: relative;
+        overflow: hidden; /* led가 outsidebox에 안넘치게 */
+        height: 175px;
+      }
+      .led1 {
+        position: absolute;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        border: none;
+        overflow: hidden; /* led 내부 텍스트가 안넘치게 */
+        font-size: 100px;
+      }
+      .set_effect {
+        color: white;
+      }
+      .f-anton {
+        font-family: 'Anton', sans-serif;
+
+        /* 확인용 */
+        width: 30px;
+      }
+      .f-handjet {
+        font-family: 'Handjet', cursive;
+
+        /* 확인용 */
+        width: 30px;
+      }
+      .f-ubuntu {
+        font-family: 'Ubuntu', sans-serif;
+
+        /* 확인용 */
+        width: 30px;
+      }
+
+      @keyframes rolling1 {
+        0% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(50%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+    </style>
+  </head>
+
+  <!-- <body class="d-flex justify-content-center align-items-center"> -->
+  <body>
+    <header></header>
+
+    <main class="container">
+      <section>
+        <div class="outsidebox bg-black">
+          <input type="text" class="led1 bg-black text-white h1" />
+          <!-- <input type="text" class="led2"> -->
+          <!-- <input type="text" class="bannerled bg-black text-white text-start"> -->
+          <!-- <input type="text" class="bannerled bg-black text-white text-start"> -->
+        </div>
+        <p></p>
+        <input
+          id="inputctn"
+          class="form-control"
+          type="text"
+          placeholder="입력해주세요."
+          aria-label="default input example"
+        />
+      </section>
+
+      <p></p>
+
+      <!-- 텍스트 속도 세팅 섹션 -->
+      <section class="container">
+        <article class="row gx-1 bg-dark rounded-top-4 py-1 px-3">
+          <article class="text-light">텍스트 속도</article>
+        </article>
+        <article class="row gx-1 bg-white border"></article>
+        <article class="row gx-1 bg-dark rounded-bottom-4 p-3 text-center">
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_speed btn btn-primary rounded-pill"
+              value="0s"
+            >
+              0X
+            </button>
+          </article>
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_speed btn btn-primary rounded-pill"
+              value="4s"
+            >
+              0.5X
+            </button>
+          </article>
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_speed btn btn-primary rounded-pill"
+              value="2s"
+            >
+              1X
+            </button>
+          </article>
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_speed btn btn-primary rounded-pill"
+              value="1.5s"
+            >
+              1.5X
+            </button>
+          </article>
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_speed btn btn-primary rounded-pill"
+              value="1s"
+            >
+              2X
+            </button>
+          </article>
+        </article>
+      </section>
+
+      <p></p>
+
+      <!-- 텍스트 크기 세팅 섹션 -->
+      <section class="container">
+        <article class="row gx-1 bg-dark rounded-top-4 py-1 px-3">
+          <article class="text-light">텍스트 크기</article>
+        </article>
+        <article class="row gx-1 bg-white border"></article>
+        <article class="row gx-1 bg-dark rounded-bottom-4 p-3 text-center">
+          <article class="col col-md-2 lev_btns">
+            <button
+              type="button"
+              class="tx_size btn btn-primary rounded-pill"
+              value="24px"
+              checked="on"
+            >
+              24
+            </button>
+          </article>
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_size btn btn-primary rounded-pill"
+              checked="on"
+              value="36px"
+            >
+              36
+            </button>
+          </article>
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_size btn btn-primary rounded-pill"
+              checked="on"
+              value="38px"
+            >
+              48
+            </button>
+          </article>
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_size btn btn-primary rounded-pill"
+              checked="on"
+              value="64px"
+            >
+              64
+            </button>
+          </article>
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_size btn btn-primary rounded-pill"
+              checked="on"
+              value="80px"
+            >
+              80
+            </button>
+          </article>
+          <article class="col lev_btns">
+            <button
+              type="button"
+              class="tx_size btn btn-primary rounded-pill"
+              checked="on"
+              value="100px"
+            >
+              100
+            </button>
+          </article>
+        </article>
+      </section>
+
+      <p></p>
+      <section class="container">
+        <article class="row">
+          <button
+            class="col btn btn-primary m-3 fs-3 bt_set_effect"
+            type="button"
+          >
+            효과 넣기
+          </button>
+          <button
+            class="col btn btn-primary m-3 fs-3 bt_pre_view"
+            type="button"
+          >
+            미리보기
+          </button>
+        </article>
+      </section>
+
+      <section class="set_effect">
+        <div>글꼴</div>
+        <div>
+          <button class="f_sty f-anton">A</button>
+          <button class="f_sty f-handjet">A</button>
+          <button class="f_sty f-ubuntu">A</button>
+        </div>
+      </section>
+
+      <section class="set_effect">
+        <div>글씨색</div>
+        <div>
+          <button class="f_clr">빨강</button>
+          <button class="f_clr">파랑</button>
+          <button class="f_clr">초록</button>
+        </div>
+      </section>
+
+      <section class="set_effect">
+        <div>배경색</div>
+        <div>
+          <button class="bg_clr">빨강</button>
+          <button class="bg_clr">파랑</button>
+          <button class="bg_clr">초록</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
