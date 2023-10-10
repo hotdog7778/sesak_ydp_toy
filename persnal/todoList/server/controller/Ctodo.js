@@ -5,8 +5,10 @@ const { Todo } = require('../models/index');
 // /api/todo/list
 exports.getTodoList = async (req, res) => {
     try{
-      const todoList = await Todo.findAll();
-
+      const todoList = await Todo.findAll({
+        where: { todoDone: false}
+      })  
+      
       res.status(200).send({
         result: true,
         todoList,
@@ -23,13 +25,14 @@ exports.getTodoList = async (req, res) => {
 // /api/todo/content
 exports.postTodo = async (req, res) => {
     try{
-      await Todo.create({
+      const newTodo = await Todo.create({
         // todoId: req.body.todoId,
         todoContent: req.body.todoContent,
       });
 
       res.status(200).send({
         result: true,
+        todo: newTodo,
       });
     } catch (err) {
       console.log(err)
@@ -43,7 +46,8 @@ exports.postTodo = async (req, res) => {
 // /api/todo/content/:todoId
 exports.patchTodo = async (req, res) => {
     try {
-      await Todo.update({ todoContent: req.body.todoContent }, {where: {todoId: req.params.todoId}})
+      const result = await Todo.update({ todoDone: req.body.todoDone }, {where: {todoId: req.params.todoId}})
+      console.log("업데이트 결과",result)
       res.status(200).send({
         result: true,
       })
@@ -58,7 +62,7 @@ exports.patchTodo = async (req, res) => {
 // DELETE
 // /api/todo/content/:todoId
 exports.deleteTodo = async (req, res) => {
-    try{
+      try{
         await Todo.destroy({
             where: { todoId: req.params.todoId },
         });
